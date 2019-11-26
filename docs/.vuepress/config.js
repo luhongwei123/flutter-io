@@ -6,7 +6,7 @@ module.exports = {
     title: '依然丶',
     description: 'how are you , how old are you!!!',
     dest: './dist',//默认在.vuepress下
-    base: '/notes/',
+    base: '/flutter-io/',
     port: 8088,
     locales: {
         '/': {

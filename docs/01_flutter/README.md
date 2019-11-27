@@ -57,3 +57,29 @@ flutter upgrade
 
 
 至此flutter SDK的环境就搭建好啦！
+
+## Android Studio/VScode安装flutter插件
+
+### Android Studio/IDEA
+
+**安装flutter插件：**
+
+file -> settings -> plugins 
+
+<img src="../screenshot/flutter/2/1.png"/>
+
+**安装dart插件：**
+
+file -> settings -> plugins 
+
+<img src="../screenshot/flutter/2/2.png"/>
+
+
+
+**注意事项**
+
+需要下载Dart SDK ,用于编译dart文件；下载地址为 <https://gekorm.com/dart-windows/>
+
+<img src="../screenshot/flutter/2/3.png"/>
+
+安装完成后，找到dart安装目录（默认是`C:\Program Files\Dart\`）下面的`dart-sdk`下面的`bin`目录加到Path环境变量即可！

@@ -83,3 +83,4 @@ file -> settings -> plugins
 <img src="../screenshot/flutter/2/3.png"/>
 
 安装完成后，找到dart安装目录（默认是`C:\Program Files\Dart\`）下面的`dart-sdk`下面的`bin`目录加到Path环境变量即可！
+

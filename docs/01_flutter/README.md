@@ -84,3 +84,21 @@ file -> settings -> plugins
 
 安装完成后，找到dart安装目录（默认是`C:\Program Files\Dart\`）下面的`dart-sdk`下面的`bin`目录加到Path环境变量即可！
 
+### VS Code
+
+**基础环境准备**
+
+1、安装vscode
+2、android sdk
+3、安装java
+4、git
+
+**vscode配置**
+
+下载dart 及 flutter 插件
+
+<img src="../screenshot/flutter/2/4.png"/>
+
+<img src="../screenshot/flutter/2/5.png"/>
+
+配置后就可以进行flutter之旅了。

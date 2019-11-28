@@ -1,6 +1,7 @@
 module.exports = {
     '/01_flutter/': [
-        ['', 'FLUTTER入门']
+        ['', 'FLUTTER入门'],
+        ['flutter_basic', 'FLUTTER基础']
     ],
 
     '/03_about/': [

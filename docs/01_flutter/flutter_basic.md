@@ -315,3 +315,186 @@ aMap.remove(1);
 print(aMap);  
 ```
 
+## 异常
+
+**1.Throw**
+
+- 抛出固定类型的异常
+
+```dart
+throw new FormatException('Expected at least 1 section');
+```
+
+- 抛出任意类型的异常
+
+```dart
+ throw 'Out of llamas!';
+```
+
+**2.catch**
+
+- 将可能出现异常的代码放置到try语句中，可以通过 on语句来指定需要捕获的异常类型，使用catch来处理异常。
+
+```dart
+ try {
+    breedMoreLlamas();
+ } on OutOfLlamasException {
+    // A specific exception
+    buyMoreLlamas();
+ } on Exception catch (e) {
+    // Anything else that is an exception
+    print('Unknown exception: $e');
+ } catch (e, s) {
+    print('Exception details:\n $e');
+    print('Stack trace:\n $s');
+ }
+```
+
+**3.finally**
+
+- Dart的finally用来执行那些无论异常是否发生都执行的操作。
+
+```dart
+final foo = '';
+
+  void misbehave() {
+    try {
+      foo = "1";
+    } catch (e) {
+      print('2');
+    }
+  }
+
+  void main() {
+    try {
+      misbehave();
+    } catch (e) {
+      print('3');
+    } finally {
+      print('4'); // 即使没有rethrow最终都会执行到
+    }
+  }
+
+```
+
+## 函数
+
+- 以下是一个实现函数的例子：
+
+```dart
+ bool isNoble(int atomicNumber) {
+     return _nobleGases[atomicNumber] != null;
+  }
+```
+
+**1.main()函数**
+
+- 每个应用程序都必须有一个顶层main()函数，它可以作为应用程序的入口点。该main()函数返回void并具有List<String>参数的可选参数。
+
+```dart
+void main() {
+   querySelector('#sample_text_id')
+       ..text = 'Click me!'
+       ..onClick.listen(reverseText);
+}
+```
+
+- 级联符号..允许您在同一个对象上进行一系列操作。除了函数调用之外，还可以访问同一对象上的字段。这通常会为您节省创建临时变量的步骤，并允许您编写更流畅的代码。
+
+```dart
+querySelector('#confirm') // Get an object.
+    ..text = 'Confirm' // Use its members.
+    ..classes.add('important')
+    ..onClick.listen((e) => window.alert('Confirmed!'));
+```
+
+**2.可选参数**
+
+- 可选的命名参数, 定义函数时，使用{param1, param2, …}，用于指定命名参数。例如：
+
+```dart
+ //设置[bold]和[hidden]标志
+ void enableFlags({bool bold, bool hidden}) {
+      // ... 
+ }  
+ 
+ enableFlags(bold: true, hidden: false);
+```
+
+- 可选的位置参数，用[]它们标记为可选的位置参数：
+
+```dart
+String say(String from, String msg, [String device]) {
+      var result = '$from says $msg';
+      if (device != null) {
+         result = '$result with a $device';
+      }
+      return result;
+  }
+```
+
+## 默认参数
+
+- 函数可以使用=为命名参数和位置参数定义默认值。默认值必须是编译时常量。如果没有提供默认值，则默认值为null。
+
+```dart
+// 设置 bold 和 hidden 标记的默认值都为false
+  void enableFlags2({bool bold = false, bool hidden = false}) {
+       // ...
+  }
+  // 调用的时候：bold will be true; hidden will be false.
+  enableFlags2(bold: true);
+```
+
+## 类
+
+**1.对象**
+
+- Dart 是一种面向对象的语言，并且支持继承。
+- Dart 语言中所有的对象都是某一个类的实例,所有的类有同一个基类--Object。
+- 一个类可以继承自多个父类。
+- 使用new语句来构造一个类
+
+```dart
+ var jsonData = JSON.decode('{"x":1, "y":2}');
+
+  // Create a Point using Point().
+  var p1 = new Point(2, 2);
+
+  // Create a Point using Point.fromJson().
+  var p2 = new Point.fromJson(jsonData);
+```
+
+- 使用.（dot）来调用实例的变量或者方法。
+- 使用`?.`来确认前操作数不为空, 常用来替代`.` , 避免左边操作数为null引发异常。
+- 使用const替代new来创建编译时的常量构造函数。
+
+**2.实例化变量**
+
+- 在类定义中，所有没有初始化的变量都会被初始化为null。
+
+```dart
+ class Point {
+    num x; // Declare instance variable x, initially null.
+    num y; // Declare y, initially null.
+    num z = 0; // Declare z, initially 0.
+ }
+
+```
+
+- 类定义中所有的变量, Dart语言都会隐式的定义 setter 方法，针对非空的变量会额外增加 getter 方法。
+
+```dart
+class Point {
+    num x;
+    num y;
+ }
+
+ main() {
+    var point = new Point();
+    point.x = 4;          // Use the setter method for x.
+    assert(point.x == 4); // Use the getter method for x.
+    assert(point.y == null); // Values default to null.
+ }
+```
+

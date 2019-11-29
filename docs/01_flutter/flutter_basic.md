@@ -498,3 +498,133 @@ class Point {
  }
 ```
 
+**3.**构造函数
+
+- 声明一个和类名相同的函数，来作为类的构造函数。
+
+- this关键字指向了当前类的实例。
+
+- 构造函数不能继承。
+
+- 使用命名构造函数从另一类或现有的数据中快速实现构造函数。
+
+```dart
+class Point {
+   num x;
+   num y;
+
+   Point(this.x, this.y);
+
+   // 命名构造函数Named constructor
+   Point.fromJson(Map json) {
+     x = json['x'];
+     y = json['y'];
+   }
+}
+```
+
+## 方法
+
+**1.实例方法**
+
+- 对象的实例方法可以访问实例变量和 this 。
+
+**2.**抽象方法
+
+**3.**枚举类型
+
+**4.为类添加特征：mixins**
+
+- mixins 是一种多类层次结构的类的代码重用。
+- 要使用 mixins ，在 with 关键字后面跟一个或多个 mixin 的名字。
+- 要实现 mixin ，就创建一个继承 Object 类的子类，不声明任何构造函数，不调用 super 。
+
+**5.类的变量和方法**
+
+- 使用 static 关键字来实现类变量和类方法。
+- 只有当静态变量被使用时才被初始化。
+- 静态方法, 静态方法（类方法）不在一个实例上进行操作，因而不必访问 this 。
+
+## 抽象类
+
+- 使用 abstract 修饰符来定义一个抽象类，该类不能被实例化。抽象类在定义接口的时候非常有用，实际上抽象中也包含一些实现。如果你想让你的抽象类被实例化，请定义一个 工厂构造函数 。
+
+- 抽象类通常包含 抽象方法。
+
+  
+
+## 类-扩展一个类
+
+- 使用 extends 创建一个子类，同时 supper 将指向父类：
+
+```dart
+class Television {
+    void turnOn() {
+       _illuminateDisplay();
+        _activateIrSensor();
+    }
+    // ...
+ }
+
+ class SmartTelevision extends Television {
+    
+    void turnOn() {
+       super.turnOn();
+       _bootNetworkInterface();
+       _initializeMemory();
+       _upgradeApps();
+    }
+    // ...
+ }
+```
+
+## 库和可见性
+
+- import,part,library指令可以帮助创建一个模块化的，可共享的代码库。库不仅提供了API，还提供隐私单元：以下划线（_）开头的标识符只对内部库可见。每个Dartapp就是一个库，即使它不使用库指令。
+
+- 库可以分布式使用包。见 [Pub Package and Asset Manager](https://www.dartlang.org/tools/pub/) 中有关pub(SDK中的一个包管理器）。
+
+- 使用 import 来指定如何从一个库命名空间用于其他库的范围。
+- 唯一需要 import 的参数是一个指向库的 URI。对于内置库，URI中具有特殊dart:scheme。对于其他库，你可以使用文件系统路径或package:scheme。包 package：scheme specifies libraries ，如pub工具提供的软件包管理器库。
+
+- 如果导入两个库是有冲突的标识符，那么你可以指定一个或两个库的前缀。
+
+```dart
+ import 'package:lib1/lib1.dart';
+  import 'package:lib2/lib2.dart' as lib2;
+  // ...
+  var element1 = new Element(); // 使用lib1里的元素
+  var element2 =
+  new lib2.Element();  // 使用lib2里的元素
+```
+
+- 如果想使用的库一部分，你可以选择性导入库。
+
+```dart
+ // 只导入foo库
+ import 'package:lib1/lib1.dart' show foo;
+
+ //导入所有除了foo
+ import 'package:lib2/lib2.dart' hide foo;
+```
+
+- 延迟(deferred)加载（也称为延迟(lazy)加载）允许应用程序按需加载库。
+
+```dart
+ import 'package:deferred/hello.dart' deferred as hello;
+```
+
+当需要库时，使用该库的调用标识符调用 LoadLibrary（）。
+
+```dart
+greet() async {
+   await hello.loadLibrary();
+   hello.printGreeting();
+ }
+
+```
+
+## 异步的支持
+
+Dart 添加了一些新的语言特性用于支持异步编程。最通常使用的特性是 async 方法和 await 表达式。Dart 库大多方法返回 Future 和 Stream 对象。这些方法是异步的：它们在设置一个可能的耗时操作（比如 I/O 操作）之后返回，而无需等待操作完成。
+
